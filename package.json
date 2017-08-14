@@ -1,0 +1,21 @@
+{
+  "scripts": {
+    "start": "npm run watch & npm run lite",
+    "lite": "lite-server",
+    "build": "browserify src/App.js --standalone App -t babelify -o public/js/sample.js",
+    "watch": "watchify src/App.js --standalone App -t babelify -o public/js/sample.js",
+    "postinstall": "npm run build"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^13.3.0",
+    "lite-server": "^2.3.0",
+    "lodash": "^4.17.4",
+    "three": "^0.85.0",
+    "watchify": "^3.9.0"
+  }
+}
