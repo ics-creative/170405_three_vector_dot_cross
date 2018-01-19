@@ -1,3 +1,4 @@
-import {App} from './App.js';
+import { App } from './App.js';
+import StepTwoScene from './scene/StepTwoScene.js';
 
-new App(2);
+new App(new StepTwoScene());

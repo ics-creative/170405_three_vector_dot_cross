@@ -7,9 +7,6 @@ const ROTATION_SPEED = 2.5;
  * 懐中電灯クラスです。
  */
 export default class FlashLight extends THREE.Object3D {
-
-
-
   get frontVector() {
     return this._frontVector;
   }
@@ -38,7 +35,7 @@ export default class FlashLight extends THREE.Object3D {
     const handle = new THREE.Mesh(
       new THREE.CylinderBufferGeometry(1, 1, 3, 10),
       new THREE.MeshBasicMaterial({
-        color: 0xCCCCCC
+        color: 0xcccccc,
       })
     );
     handle.rotation.z = -90 * Math.PI / 180;
@@ -48,7 +45,7 @@ export default class FlashLight extends THREE.Object3D {
     const head = new THREE.Mesh(
       new THREE.CylinderBufferGeometry(1.5, 1, 1.5, 10),
       new THREE.MeshBasicMaterial({
-        color: 0xAAAAAA
+        color: 0xaaaaaa,
       })
     );
     head.rotation.z = -90 * Math.PI / 180;
@@ -61,13 +58,13 @@ export default class FlashLight extends THREE.Object3D {
     const beam = new THREE.Mesh(
       new THREE.CylinderBufferGeometry(15, 0.5, 20, 40, 10, true),
       new THREE.MeshBasicMaterial({
-        color: 0xFFFF55,
+        color: 0xffff55,
         opacity: 0.3,
         transparent: true,
         map: beamTexture,
         depthWrite: false,
         side: THREE.DoubleSide,
-        blending: THREE.AdditiveBlending
+        blending: THREE.AdditiveBlending,
       })
     );
     beam.rotation.z = -90 * Math.PI / 180;

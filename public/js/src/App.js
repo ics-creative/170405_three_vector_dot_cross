@@ -1,17 +1,14 @@
 import * as THREE from '../libs/three.module.js';
-import StepOneScene from './scene/StepOneScene.js';
-import StepTwoScene from './scene/StepTwoScene.js';
 
 /**
  * メインアプリクラスです。
  */
 export class App {
-
   /**
-   * コンストラクター
    * @constructor
+   * @param sceneInstance
    */
-  constructor(step) {
+  constructor(sceneInstance) {
     this._update = this._update.bind(this);
     this._resize = this._resize.bind(this);
 
@@ -19,17 +16,10 @@ export class App {
     this._wrapper = document.getElementById('app');
 
     // シーン
-    switch (step) {
-      case 1:
-        this._scene = new StepOneScene();
-        break;
-      case 2:
-        this._scene = new StepTwoScene();
-        break;
-    }
+    this._scene = sceneInstance;
 
     // レンダラー
-    this._renderer = new THREE.WebGLRenderer({antialias: false});
+    this._renderer = new THREE.WebGLRenderer({ antialias: false });
     this._renderer.setClearColor(0x000000);
     this._renderer.setPixelRatio(1);
     this._wrapper.appendChild(this._renderer.domElement);
@@ -61,6 +51,7 @@ export class App {
     const height = this._wrapper.clientHeight;
     this._renderer.domElement.setAttribute('width', String(width));
     this._renderer.domElement.setAttribute('height', String(height));
+    this._renderer.setPixelRatio(window.devicePixelRatio || 1.0);
     this._renderer.setSize(width, height);
     this._scene.camera.aspect = width / height;
     this._scene.camera.updateProjectionMatrix();

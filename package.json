@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "lite-server",
-    "format": "prettier-eslint --write 'src/**/*.js'"
+    "format": "prettier-eslint --write 'public/js/src/**/*.js'"
   },
   "devDependencies": {
     "eslint-config-google": "^0.9.1",

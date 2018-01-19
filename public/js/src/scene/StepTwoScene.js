@@ -7,7 +7,6 @@ import Truck from '../object/Truck.js';
  * ステップ２シーンクラスです。
  */
 export default class StepTwoScene extends THREE.Scene {
-
   /**
    * コンストラクター
    * @constructor
@@ -73,7 +72,10 @@ export default class StepTwoScene extends THREE.Scene {
    * ポイントから法線を算出します。
    */
   _getNormal(curentPoint, nextPoint) {
-    const frontVec = curentPoint.clone().sub(nextPoint).normalize();
+    const frontVec = curentPoint
+      .clone()
+      .sub(nextPoint)
+      .normalize();
     const sideVec = new THREE.Vector3(0, 0, -1);
     const normalVec = frontVec.cross(sideVec);
 

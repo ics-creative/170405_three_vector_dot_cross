@@ -4,11 +4,7 @@ import * as THREE from '../../libs/three.module.js';
 const PARTICLE_NUM = 3000;
 
 /** カラーリスト */
-const COLOR_LIST = [
-  0xffff00,
-  0xffffdd,
-  0xffffff
-];
+const COLOR_LIST = [0xffff00, 0xffffdd, 0xffffff];
 /** 球の半径 */
 const RADIUS = 50;
 
@@ -16,7 +12,6 @@ const RADIUS = 50;
  * パーティクルエミッタークラスです。
  */
 export default class ParticleEmitter extends THREE.Object3D {
-
   /**
    * コンストラクター
    * @constructor
@@ -57,15 +52,15 @@ export default class ParticleEmitter extends THREE.Object3D {
       map: this._texture,
       transparent: true,
       blending: THREE.AdditiveBlending,
-      opacity: 0.3
+      opacity: 0.3,
     });
 
     // スプライト
     const sprite = new THREE.Sprite(material);
 
     // 球の表面にランダムに配置
-    const phi = ((Math.random() * 180) - 90) * Math.PI / 180;
-    const theta = (Math.random() * 360) * Math.PI / 180;
+    const phi = (Math.random() * 180 - 90) * Math.PI / 180;
+    const theta = Math.random() * 360 * Math.PI / 180;
     const radius = RADIUS;
     sprite.position.x = radius * Math.cos(phi) * Math.cos(theta) * -1;
     sprite.position.y = radius * Math.sin(phi);
@@ -86,7 +81,10 @@ export default class ParticleEmitter extends THREE.Object3D {
 
     this._particleStore.map((particle) => {
       // 絞り値から透明度の割合を算出
-      const dot = particle.position.clone().normalize().dot(target);
+      const dot = particle.position
+        .clone()
+        .normalize()
+        .dot(target);
       let opacity = (dot - (1 - aperture)) / aperture;
       // ちらつかせます
       opacity *= Math.random();

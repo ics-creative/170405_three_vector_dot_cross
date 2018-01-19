@@ -4,9 +4,10 @@ import * as THREE from '../../libs/three.module.js';
  * コースクラスです。
  */
 export default class Course extends THREE.Object3D {
-
   /** 頂点情報 */
-  get points() { return this._points; }
+  get points() {
+    return this._points;
+  }
 
   /**
    * コンストラクター
@@ -17,7 +18,7 @@ export default class Course extends THREE.Object3D {
 
     this._points = [];
     let radius = 5;
-    for(let index = 0; index < 362; index++) {
+    for (let index = 0; index < 362; index++) {
       let rad = index * Math.PI / 180;
 
       let sin = Math.sin(rad * 3);
@@ -28,7 +29,7 @@ export default class Course extends THREE.Object3D {
     }
 
     const material = new THREE.LineBasicMaterial({
-      color: 0xff0000
+      color: 0xff0000,
     });
 
     const geometry = new THREE.Geometry();

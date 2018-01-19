@@ -4,7 +4,6 @@ import * as THREE from '../../libs/three.module.js';
  * トロッコクラスです。
  */
 export default class Truck extends THREE.Object3D {
-
   /**
    * コンストラクターです。
    * @constructor
@@ -16,7 +15,7 @@ export default class Truck extends THREE.Object3D {
     const body = new THREE.Mesh(
       new THREE.BoxGeometry(3, 3, 6),
       new THREE.MeshPhongMaterial({
-        color: 0xCCCCCC
+        color: 0xcccccc,
       })
     );
     body.position.y = 3;
@@ -26,7 +25,7 @@ export default class Truck extends THREE.Object3D {
     const wheel1 = new THREE.Mesh(
       new THREE.CylinderBufferGeometry(1, 1, 4, 10),
       new THREE.MeshPhongMaterial({
-        color: 0xFFFF00
+        color: 0xffff00,
       })
     );
     wheel1.rotation.x = wheel1.rotation.z = 90 * Math.PI / 180;
@@ -38,7 +37,7 @@ export default class Truck extends THREE.Object3D {
     const wheel2 = new THREE.Mesh(
       new THREE.CylinderBufferGeometry(1, 1, 4, 10),
       new THREE.MeshPhongMaterial({
-        color: 0xFFFF00
+        color: 0xffff00,
       })
     );
     wheel2.rotation.x = wheel2.rotation.z = 90 * Math.PI / 180;
@@ -50,7 +49,5 @@ export default class Truck extends THREE.Object3D {
   /**
    * フレーム毎の更新をします。
    */
-  update() {
-
-  }
+  update() {}
 }
