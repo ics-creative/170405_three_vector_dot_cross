@@ -30,12 +30,12 @@ export default class ParticleEmitter extends THREE.Object3D {
     super();
 
     // テクスチャ
-    let loader = new THREE.TextureLoader();
+    const loader = new THREE.TextureLoader();
     this._texture = loader.load('imgs/particle.png');
 
     // 数分のパーティクルを生成
     for(let index = 0; index < ParticleEmitter.PARTICLE_NUM; index++) {
-      let particle = this._createParticle();
+      const particle = this._createParticle();
       this.add(particle);
       // ストアに追加
       this._particleStore.push(particle);
@@ -47,11 +47,11 @@ export default class ParticleEmitter extends THREE.Object3D {
    */
   _createParticle() {
     // ランダムに色を設定
-    let rand = Math.floor(Math.random() * 3);
-    let color = ParticleEmitter.COLOR_LIST[rand];
+    const rand = Math.floor(Math.random() * 3);
+    const color = ParticleEmitter.COLOR_LIST[rand];
 
     // マテリアル
-    let material = new THREE.SpriteMaterial({
+    const material = new THREE.SpriteMaterial({
       color: color,
       map: this._texture,
       transparent: true,
@@ -60,12 +60,12 @@ export default class ParticleEmitter extends THREE.Object3D {
     });
 
     // スプライト
-    let sprite = new THREE.Sprite(material);
+    const sprite = new THREE.Sprite(material);
 
     // 球の表面にランダムに配置
-    let phi = ((Math.random() * 180) - 90) * Math.PI / 180;
-    let theta = (Math.random() * 360) * Math.PI / 180;
-    let radius = ParticleEmitter.RADIUS;
+    const phi = ((Math.random() * 180) - 90) * Math.PI / 180;
+    const theta = (Math.random() * 360) * Math.PI / 180;
+    const radius = ParticleEmitter.RADIUS;
     sprite.position.x = radius * Math.cos(phi) * Math.cos(theta) * -1;
     sprite.position.y = radius * Math.sin(phi);
     sprite.position.z = radius * Math.cos(phi) * Math.sin(theta);
@@ -80,11 +80,11 @@ export default class ParticleEmitter extends THREE.Object3D {
    * フレーム毎の更新です。
    */
   update(lightFrontVector, aperture) {
-    let target = lightFrontVector.clone();
+    const target = lightFrontVector.clone();
     // 全てのパーティクルに対して照らされているか判定
     _.each(this._particleStore, (particle) => {
       // 絞り値から透明度の割合を算出
-      let dot = particle.position.clone().normalize().dot(target);
+      const dot = particle.position.clone().normalize().dot(target);
       let opacity = (dot - (1 - aperture)) / aperture;
       // ちらつかせます
       opacity *= Math.random();

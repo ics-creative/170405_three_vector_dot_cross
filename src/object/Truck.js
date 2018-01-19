@@ -13,7 +13,7 @@ export default class Truck extends THREE.Object3D {
     super();
 
     // 本体
-    let body = new THREE.Mesh(
+    const body = new THREE.Mesh(
       new THREE.BoxGeometry(3, 3, 6),
       new THREE.MeshPhongMaterial({
         color: 0xCCCCCC
@@ -23,7 +23,7 @@ export default class Truck extends THREE.Object3D {
     this.add(body);
 
     // 車輪１
-    let wheel1 = new THREE.Mesh(
+    const wheel1 = new THREE.Mesh(
       new THREE.CylinderBufferGeometry(1, 1, 4, 10),
       new THREE.MeshPhongMaterial({
         color: 0xFFFF00
@@ -35,7 +35,7 @@ export default class Truck extends THREE.Object3D {
     this.add(wheel1);
 
     // 車輪２
-    let wheel2 = new THREE.Mesh(
+    const wheel2 = new THREE.Mesh(
       new THREE.CylinderBufferGeometry(1, 1, 4, 10),
       new THREE.MeshPhongMaterial({
         color: 0xFFFF00

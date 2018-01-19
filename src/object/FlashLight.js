@@ -27,7 +27,7 @@ export default class FlashLight extends THREE.Object3D {
     super();
 
     // 持ち手部分
-    let handle = new THREE.Mesh(
+    const handle = new THREE.Mesh(
       new THREE.CylinderBufferGeometry(1, 1, 3, 10),
       new THREE.MeshBasicMaterial({
         color: 0xCCCCCC
@@ -37,7 +37,7 @@ export default class FlashLight extends THREE.Object3D {
     this.add(handle);
 
     // 頭
-    let head = new THREE.Mesh(
+    const head = new THREE.Mesh(
       new THREE.CylinderBufferGeometry(1.5, 1, 1.5, 10),
       new THREE.MeshBasicMaterial({
         color: 0xAAAAAA
@@ -48,9 +48,9 @@ export default class FlashLight extends THREE.Object3D {
     this.add(head);
 
     // ビーム
-    let loader = new THREE.TextureLoader();
-    let beamTexture = loader.load('imgs/beam.png');
-    let beam = new THREE.Mesh(
+    const loader = new THREE.TextureLoader();
+    const beamTexture = loader.load('imgs/beam.png');
+    const beam = new THREE.Mesh(
       new THREE.CylinderBufferGeometry(15, 0.5, 20, 40, 10, true),
       new THREE.MeshBasicMaterial({
         color: 0xFFFF55,
@@ -73,14 +73,14 @@ export default class FlashLight extends THREE.Object3D {
   update() {
     // 角度をインクリメント
     this._angle += FlashLight.ROTATION_SPEED;
-    let radian = this._angle * Math.PI / 180;
+    const radian = this._angle * Math.PI / 180;
 
     // ライトを回転
     this.rotation.z = radian;
 
     // 正面ベクトルを更新
-    let x = Math.cos(radian);
-    let y = Math.sin(radian);
+    const x = Math.cos(radian);
+    const y = Math.sin(radian);
     this._frontVector = new THREE.Vector3(x, y, 0);
   }
 }

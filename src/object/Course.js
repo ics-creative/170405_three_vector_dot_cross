@@ -27,14 +27,14 @@ export default class Course extends THREE.Object3D {
       this._points.push(new THREE.Vector3(x, y, 0));
     }
 
-    var material = new THREE.LineBasicMaterial({
+    const material = new THREE.LineBasicMaterial({
       color: 0xff0000
     });
 
-    var geometry = new THREE.Geometry();
+    const geometry = new THREE.Geometry();
     geometry.vertices = this._points;
 
-    var line = new THREE.Line(geometry, material);
+    const line = new THREE.Line(geometry, material);
     this.add(line);
   }
 }

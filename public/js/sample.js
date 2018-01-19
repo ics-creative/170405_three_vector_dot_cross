@@ -60789,10 +60789,6 @@ var _StepTwoScene = require('./scene/StepTwoScene');
 
 var _StepTwoScene2 = _interopRequireDefault(_StepTwoScene);
 
-var _Camera = require('./camera/Camera');
-
-var _Camera2 = _interopRequireDefault(_Camera);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
@@ -60825,10 +60821,7 @@ module.exports = function () {
       case 2:
         this._scene = new _StepTwoScene2.default();
         break;
-    };
-
-    // カメラ
-    this._camera = _Camera2.default.instance;
+    }
 
     // レンダラー
     this._renderer = new THREE.WebGLRenderer({ antialias: false });
@@ -60856,7 +60849,7 @@ module.exports = function () {
       // シーンの更新
       this._scene.update();
       // 描画
-      this._renderer.render(this._scene, this._camera);
+      this._renderer.render(this._scene, this._scene.camera);
     }
 
     /**
@@ -60871,15 +60864,15 @@ module.exports = function () {
       this._renderer.domElement.setAttribute('width', String(width));
       this._renderer.domElement.setAttribute('height', String(height));
       this._renderer.setSize(width, height);
-      this._camera.aspect = width / height;
-      this._camera.updateProjectionMatrix();
+      this._scene.camera.aspect = width / height;
+      this._scene.camera.updateProjectionMatrix();
     }
   }]);
 
   return App;
 }();
 
-},{"./camera/Camera":4,"./scene/StepOneScene":9,"./scene/StepTwoScene":10,"three":2}],4:[function(require,module,exports){
+},{"./scene/StepOneScene":9,"./scene/StepTwoScene":10,"three":2}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -60906,32 +60899,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Camera = function (_THREE$PerspectiveCam) {
   _inherits(Camera, _THREE$PerspectiveCam);
 
-  _createClass(Camera, null, [{
-    key: 'instance',
-
-
-    /** インスタンスを取得します。 */
-    get: function get() {
-      return Camera._instance || new Camera();
-    }
-
-    /**
-     * コンストラクターです。
-     * @constructor
-     */
-
-  }]);
-
+  /**
+   * コンストラクターです。
+   * @constructor
+   */
   function Camera() {
     _classCallCheck(this, Camera);
 
-    var _this = _possibleConstructorReturn(this, (Camera.__proto__ || Object.getPrototypeOf(Camera)).call(this, 45, window.innerWidth / window.innerHeight, 10, 500));
-
-    _this.position.y = 40;
-    _this.position.z = 30;
-
-    Camera._instance = _this;
-    return _this;
+    return _possibleConstructorReturn(this, (Camera.__proto__ || Object.getPrototypeOf(Camera)).call(this, 45, window.innerWidth / window.innerHeight, 10, 500));
   }
 
   /**
@@ -61417,10 +61392,10 @@ var StepOneScene = function (_THREE$Scene) {
     // カメラ
     var _this = _possibleConstructorReturn(this, (StepOneScene.__proto__ || Object.getPrototypeOf(StepOneScene)).call(this));
 
-    _this._camera = _Camera2.default.instance;
-    _this._camera.position.x = 10;
-    _this._camera.position.y = 50;
-    _this._camera.position.z = 10;
+    _this.camera = new _Camera2.default();
+    _this.camera.position.x = 10;
+    _this.camera.position.y = 50;
+    _this.camera.position.z = 10;
 
     // 環境光源
     var ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -61450,7 +61425,7 @@ var StepOneScene = function (_THREE$Scene) {
     key: 'update',
     value: function update() {
       // カメラを更新
-      this._camera.update();
+      this.camera.update();
 
       // ライトを更新
       this._flashLight.update();
@@ -61482,13 +61457,13 @@ var _Camera = require('../camera/Camera');
 
 var _Camera2 = _interopRequireDefault(_Camera);
 
-var _Truck = require('../object/Truck');
-
-var _Truck2 = _interopRequireDefault(_Truck);
-
 var _Course = require('../object/Course');
 
 var _Course2 = _interopRequireDefault(_Course);
+
+var _Truck = require('../object/Truck');
+
+var _Truck2 = _interopRequireDefault(_Truck);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61515,14 +61490,13 @@ var StepTwoScene = function (_THREE$Scene) {
 
     var _this = _possibleConstructorReturn(this, (StepTwoScene.__proto__ || Object.getPrototypeOf(StepTwoScene)).call(this));
 
-    _this._handleAngle = 0;
     _this._frame = 0;
 
     // カメラ
-    _this._camera = _Camera2.default.instance;
-    _this._camera.position.y = 10;
-    _this._camera.position.x = 10;
-    _this._camera.position.z = 30;
+    _this.camera = new _Camera2.default();
+    _this.camera.position.y = 10;
+    _this.camera.position.x = 10;
+    _this.camera.position.z = 30;
 
     // 環境光源
     var ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -61557,7 +61531,7 @@ var StepTwoScene = function (_THREE$Scene) {
   _createClass(StepTwoScene, [{
     key: 'update',
     value: function update() {
-      this._camera.update();
+      this.camera.update();
       this._frame++;
       if (this._frame > 360) {
         this._frame = 0;

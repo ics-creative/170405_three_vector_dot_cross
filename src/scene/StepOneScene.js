@@ -9,7 +9,7 @@ import ParticleEmitter from '../object/ParticleEmitter';
 export default class StepOneScene extends THREE.Scene {
 
   /** カメラ */
-  _camera;
+  camera;
   /** 懐中電灯 */
   _flashLight;
   /** パーティクルエミッター */
@@ -23,13 +23,13 @@ export default class StepOneScene extends THREE.Scene {
     super();
 
     // カメラ
-    this._camera = Camera.instance;
-    this._camera.position.x = 10;
-    this._camera.position.y = 50;
-    this._camera.position.z = 10;
+    this.camera = new Camera();
+    this.camera.position.x = 10;
+    this.camera.position.y = 50;
+    this.camera.position.z = 10;
 
     // 環境光源
-    let ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     this.add(ambientLight);
 
     // 懐中電灯
@@ -46,7 +46,7 @@ export default class StepOneScene extends THREE.Scene {
    */
   update() {
     // カメラを更新
-    this._camera.update();
+    this.camera.update();
 
     // ライトを更新
     this._flashLight.update();
