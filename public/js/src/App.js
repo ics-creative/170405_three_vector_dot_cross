@@ -1,11 +1,11 @@
-import * as THREE from 'three';
-import StepOneScene from './scene/StepOneScene';
-import StepTwoScene from './scene/StepTwoScene';
+import * as THREE from '../libs/three.module.js';
+import StepOneScene from './scene/StepOneScene.js';
+import StepTwoScene from './scene/StepTwoScene.js';
 
 /**
  * メインアプリクラスです。
  */
-module.exports = class App {
+export class App {
 
   /**
    * コンストラクター
@@ -65,4 +65,4 @@ module.exports = class App {
     this._scene.camera.aspect = width / height;
     this._scene.camera.updateProjectionMatrix();
   }
-};
+}

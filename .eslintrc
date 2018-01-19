@@ -1,16 +1,6 @@
 {
-  "env": {
-    "node": true,
-    "es6": true
-  },
+  "extends": ["google"],
   "parserOptions": {
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "modules": true
-    }
-  },
-  "rules": {
-    "quotes": 0,
-    "no-underscore-dangle": 0
+    "ecmaVersion": 2017
   }
 }

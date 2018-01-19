@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as THREE from '../../libs/three.module.js';
 
 /**
  * トロッコクラスです。
@@ -6,7 +6,7 @@ import * as THREE from 'three';
 export default class Truck extends THREE.Object3D {
 
   /**
-   * コンストラクター
+   * コンストラクターです。
    * @constructor
    */
   constructor() {

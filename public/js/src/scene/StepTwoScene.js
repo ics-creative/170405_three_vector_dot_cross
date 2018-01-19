@@ -1,7 +1,7 @@
-import * as THREE from 'three';
-import Camera from '../camera/Camera';
-import Course from '../object/Course';
-import Truck from '../object/Truck';
+import * as THREE from '../../libs/three.module.js';
+import Camera from '../camera/Camera.js';
+import Course from '../object/Course.js';
+import Truck from '../object/Truck.js';
 
 /**
  * ステップ２シーンクラスです。

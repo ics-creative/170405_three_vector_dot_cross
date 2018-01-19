@@ -1,23 +1,22 @@
-import * as THREE from 'three';
+import * as THREE from '../../libs/three.module.js';
+
+/** 回転スピード */
+const ROTATION_SPEED = 2.5;
 
 /**
  * 懐中電灯クラスです。
  */
 export default class FlashLight extends THREE.Object3D {
 
-  /** 回転スピード */
-  static ROTATION_SPEED = 2.5;
 
-  /** 正面ベクトル */
-  _frontVector = new THREE.Vector3(0, 1, 0);
-  get frontVector() { return this._frontVector; }
 
-  /** 絞り値 */
-  _aperture = 0.2;
-  get aperture() { return this._aperture; }
+  get frontVector() {
+    return this._frontVector;
+  }
 
-  /** 回転角度 */
-  _angle = 0;
+  get aperture() {
+    return this._aperture;
+  }
 
   /**
    * コンストラクター
@@ -25,6 +24,15 @@ export default class FlashLight extends THREE.Object3D {
    */
   constructor() {
     super();
+
+    /** 正面ベクトル */
+    this._frontVector = new THREE.Vector3(0, 1, 0);
+
+    /** 絞り値 */
+    this._aperture = 0.2;
+
+    /** 回転角度 */
+    this._angle = 0;
 
     // 持ち手部分
     const handle = new THREE.Mesh(
@@ -72,7 +80,7 @@ export default class FlashLight extends THREE.Object3D {
    */
   update() {
     // 角度をインクリメント
-    this._angle += FlashLight.ROTATION_SPEED;
+    this._angle += ROTATION_SPEED;
     const radian = this._angle * Math.PI / 180;
 
     // ライトを回転
