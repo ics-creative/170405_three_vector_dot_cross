@@ -8,5 +8,8 @@
     "lite-server": "^2.6.1",
     "prettier-eslint": "^15.0.0",
     "prettier-eslint-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "@types/three": "^0.140.0"
   }
 }
