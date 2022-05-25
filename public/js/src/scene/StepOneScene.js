@@ -36,12 +36,12 @@ export default class StepOneScene extends THREE.Scene {
   /**
    * 更新します。
    */
-  update() {
+  update(startTime) {
     // カメラを更新
     this.camera.update();
 
     // ライトを更新
-    this._flashLight.update();
+    this._flashLight.update(startTime);
 
     // パーティクルを更新
     this._particleEmitter.update(

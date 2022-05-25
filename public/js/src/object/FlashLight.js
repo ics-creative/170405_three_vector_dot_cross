@@ -1,7 +1,8 @@
 import * as THREE from '../../libs/three.module.js';
 
 /** 回転スピード */
-const ROTATION_SPEED = 2.5;
+//1秒あたりの角度
+const DEGREES = 150;
 
 /**
  * 懐中電灯クラスです。
@@ -75,9 +76,12 @@ export default class FlashLight extends THREE.Object3D {
   /**
    * フレーム毎のアップデートをします。
    */
-  update() {
-    // 角度をインクリメント
-    this._angle += ROTATION_SPEED;
+  update(startTime) {
+    // 現在時間の継続時間に対する進捗度を算出
+    const progress = (Date.now() - startTime) / 1000;
+
+    // 角度を更新する
+    this._angle = DEGREES * progress;
     const radian = this._angle * Math.PI / 180;
 
     // ライトを回転
