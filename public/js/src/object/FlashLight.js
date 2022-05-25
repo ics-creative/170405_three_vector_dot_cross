@@ -1,6 +1,6 @@
 import * as THREE from '../../libs/three.module.js';
 
-/** 1秒あたりの角度 */
+/** 1秒あたりに変更する角度 */
 const DEGREES = 150;
 
 /**
