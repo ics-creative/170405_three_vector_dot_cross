@@ -28,7 +28,8 @@ export class App {
     this._resize();
     window.addEventListener('resize', this._resize);
 
-    this.startTime = Date.now(); // ⭐️アニメーションの開始時間を格納する変数
+    // アニメーションの開始時間を格納する変数
+    this.startTime = Date.now();
 
     // フレーム毎の更新
     this._update();
