@@ -1,7 +1,6 @@
 import * as THREE from '../../libs/three.module.js';
 
-/** 回転スピード */
-//1秒あたりの角度
+/** 1秒あたりの角度 */
 const DEGREES = 150;
 
 /**
