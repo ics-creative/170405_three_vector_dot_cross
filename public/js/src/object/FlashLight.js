@@ -79,7 +79,7 @@ export default class FlashLight extends THREE.Object3D {
     // 現在時間の継続時間に対する進捗度を算出
     const progress = (Date.now() - startTime) / 1000;
 
-    // 角度を更新する
+    // 角度を更新
     this._angle = DEGREES * progress;
     const radian = this._angle * Math.PI / 180;
 
