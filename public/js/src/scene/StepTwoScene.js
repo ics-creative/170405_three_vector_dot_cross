@@ -44,17 +44,27 @@ export default class StepTwoScene extends THREE.Scene {
     this._truck.scale.multiplyScalar(0.5);
     this._truck.position.copy(this._course.points[0]);
     this.add(this._truck);
+
+    // 1周（6秒）を判定するための変数
+    this.multipleOf6 = 0;
   }
 
   /**
    * 更新します。
    */
-  update() {
+
+  update(startTime) {
     this.camera.update();
-    this._frame++;
-    if (this._frame > 360) {
-      this._frame = 0;
+
+    // 現在時間の継続時間に対する進捗度を算出
+    const progress = (Date.now() - startTime) / 1000;
+
+    // 1周（6秒）を判定
+    if (Math.floor(progress) % 6 === 0) {
+      this.multipleOf6 = Math.floor(progress) / 6;
     }
+    // コースを360分割した点のうち、1秒あたり60点分移動
+    this._frame = Math.round(60 * (progress - 6 * this.multipleOf6));
 
     // コースの法線を取得
     const normal = this._getNormal(
@@ -71,8 +81,8 @@ export default class StepTwoScene extends THREE.Scene {
   /**
    * ポイントから法線を算出します。
    */
-  _getNormal(curentPoint, nextPoint) {
-    const frontVec = curentPoint
+  _getNormal(currentPoint, nextPoint) {
+    const frontVec = currentPoint
       .clone()
       .sub(nextPoint)
       .normalize();
