@@ -49,12 +49,14 @@ export default class StepTwoScene extends THREE.Scene {
   /**
    * 更新します。
    */
-  update() {
+  update(startTime) {
     this.camera.update();
-    this._frame++;
-    if (this._frame > 360) {
-      this._frame = 0;
-    }
+
+    // 現在時間の継続時間に対する進捗度を算出
+    const progress = (Date.now() - startTime) / 6000;
+
+    // 6秒かけて1周する
+      this._frame = Math.round(360 * (progress - Math.floor(progress)));
 
     // コースの法線を取得
     const normal = this._getNormal(
@@ -71,8 +73,8 @@ export default class StepTwoScene extends THREE.Scene {
   /**
    * ポイントから法線を算出します。
    */
-  _getNormal(curentPoint, nextPoint) {
-    const frontVec = curentPoint
+  _getNormal(currentPoint, nextPoint) {
+    const frontVec = currentPoint
       .clone()
       .sub(nextPoint)
       .normalize();

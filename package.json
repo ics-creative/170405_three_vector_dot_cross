@@ -4,12 +4,12 @@
     "format": "prettier-eslint --write 'public/js/src/**/*.js'"
   },
   "devDependencies": {
-    "eslint-config-google": "^0.9.1",
-    "lite-server": "^2.3.0",
-    "prettier-eslint": "^8.8.0",
-    "prettier-eslint-cli": "^4.7.0"
+    "eslint-config-google": "^0.14.0",
+    "lite-server": "^2.6.1",
+    "prettier-eslint": "^15.0.0",
+    "prettier-eslint-cli": "^6.0.1"
   },
   "dependencies": {
-    "@types/three": "^0.89.3"
+    "@types/three": "^0.140.0"
   }
 }
