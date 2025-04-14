@@ -1,4 +1,4 @@
-import * as THREE from '../../libs/three.module.js';
+import * as THREE from "three";
 
 /** 1秒あたりに変更する角度 */
 const DEGREES = 150;
@@ -33,30 +33,30 @@ export default class FlashLight extends THREE.Object3D {
 
     // 持ち手部分
     const handle = new THREE.Mesh(
-      new THREE.CylinderBufferGeometry(1, 1, 3, 10),
+      new THREE.CylinderGeometry(1, 1, 3, 10),
       new THREE.MeshBasicMaterial({
         color: 0xcccccc,
-      })
+      }),
     );
-    handle.rotation.z = -90 * Math.PI / 180;
+    handle.rotation.z = (-90 * Math.PI) / 180;
     this.add(handle);
 
     // 頭
     const head = new THREE.Mesh(
-      new THREE.CylinderBufferGeometry(1.5, 1, 1.5, 10),
+      new THREE.CylinderGeometry(1.5, 1, 1.5, 10),
       new THREE.MeshBasicMaterial({
         color: 0xaaaaaa,
-      })
+      }),
     );
-    head.rotation.z = -90 * Math.PI / 180;
+    head.rotation.z = (-90 * Math.PI) / 180;
     head.position.x = 2;
     this.add(head);
 
     // ビーム
     const loader = new THREE.TextureLoader();
-    const beamTexture = loader.load('imgs/beam.png');
+    const beamTexture = loader.load("imgs/beam.png");
     const beam = new THREE.Mesh(
-      new THREE.CylinderBufferGeometry(15, 0.5, 20, 40, 10, true),
+      new THREE.CylinderGeometry(15, 0.5, 20, 40, 10, true),
       new THREE.MeshBasicMaterial({
         color: 0xffff55,
         opacity: 0.3,
@@ -65,9 +65,9 @@ export default class FlashLight extends THREE.Object3D {
         depthWrite: false,
         side: THREE.DoubleSide,
         blending: THREE.AdditiveBlending,
-      })
+      }),
     );
-    beam.rotation.z = -90 * Math.PI / 180;
+    beam.rotation.z = (-90 * Math.PI) / 180;
     beam.position.x = 12;
     this.add(beam);
   }
@@ -81,7 +81,7 @@ export default class FlashLight extends THREE.Object3D {
 
     // 角度を更新
     this._angle = DEGREES * progress;
-    const radian = this._angle * Math.PI / 180;
+    const radian = (this._angle * Math.PI) / 180;
 
     // ライトを回転
     this.rotation.z = radian;

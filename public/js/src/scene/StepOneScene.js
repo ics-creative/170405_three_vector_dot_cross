@@ -1,7 +1,7 @@
-import * as THREE from '../../libs/three.module.js';
-import Camera from '../camera/Camera.js';
-import FlashLight from '../object/FlashLight.js';
-import ParticleEmitter from '../object/ParticleEmitter.js';
+import * as THREE from "three";
+import Camera from "../camera/Camera.js";
+import FlashLight from "../object/FlashLight.js";
+import ParticleEmitter from "../object/ParticleEmitter.js";
 
 /**
  * ステップ１シーンクラスです。
@@ -46,7 +46,7 @@ export default class StepOneScene extends THREE.Scene {
     // パーティクルを更新
     this._particleEmitter.update(
       this._flashLight.frontVector,
-      this._flashLight.aperture
+      this._flashLight.aperture,
     );
   }
 }

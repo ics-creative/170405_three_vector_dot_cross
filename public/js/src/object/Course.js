@@ -1,4 +1,4 @@
-import * as THREE from '../../libs/three.module.js';
+import * as THREE from "three";
 
 /**
  * コースクラスです。
@@ -21,7 +21,7 @@ export default class Course extends THREE.Object3D {
     const floatArray = [];
     let radius = 5;
     for (let index = 0; index < 362; index++) {
-      let rad = index * Math.PI / 180;
+      let rad = (index * Math.PI) / 180;
 
       let sin = Math.sin(rad * 3);
 
@@ -41,8 +41,8 @@ export default class Course extends THREE.Object3D {
     // 参照: https://threejs.org/docs/#api/en/core/BufferGeometry
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute(
-      'position',
-      new THREE.BufferAttribute(new Float32Array(floatArray), 3)
+      "position",
+      new THREE.BufferAttribute(new Float32Array(floatArray), 3),
     );
 
     const line = new THREE.Line(geometry, material);

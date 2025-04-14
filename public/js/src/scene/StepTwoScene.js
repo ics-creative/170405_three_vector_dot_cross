@@ -1,7 +1,7 @@
-import * as THREE from '../../libs/three.module.js';
-import Camera from '../camera/Camera.js';
-import Course from '../object/Course.js';
-import Truck from '../object/Truck.js';
+import * as THREE from "three";
+import Camera from "../camera/Camera.js";
+import Course from "../object/Course.js";
+import Truck from "../object/Truck.js";
 
 /**
  * ステップ２シーンクラスです。
@@ -56,12 +56,12 @@ export default class StepTwoScene extends THREE.Scene {
     const progress = (Date.now() - startTime) / 6000;
 
     // 6秒かけて1周する
-      this._frame = Math.round(360 * (progress - Math.floor(progress)));
+    this._frame = Math.round(360 * (progress - Math.floor(progress)));
 
     // コースの法線を取得
     const normal = this._getNormal(
       this._course.points[this._frame],
-      this._course.points[this._frame + 1]
+      this._course.points[this._frame + 1],
     );
 
     // トラックの位置を修正
@@ -74,10 +74,7 @@ export default class StepTwoScene extends THREE.Scene {
    * ポイントから法線を算出します。
    */
   _getNormal(currentPoint, nextPoint) {
-    const frontVec = currentPoint
-      .clone()
-      .sub(nextPoint)
-      .normalize();
+    const frontVec = currentPoint.clone().sub(nextPoint).normalize();
     const sideVec = new THREE.Vector3(0, 0, -1);
     const normalVec = frontVec.cross(sideVec);
 

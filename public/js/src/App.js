@@ -1,4 +1,4 @@
-import * as THREE from '../libs/three.module.js';
+import * as THREE from "three";
 
 /**
  * メインアプリクラスです。
@@ -13,7 +13,7 @@ export class App {
     this._resize = this._resize.bind(this);
 
     // DOM
-    this._wrapper = document.getElementById('app');
+    this._wrapper = document.getElementById("app");
 
     // シーン
     this._scene = sceneInstance;
@@ -26,7 +26,7 @@ export class App {
 
     // リサイズ
     this._resize();
-    window.addEventListener('resize', this._resize);
+    window.addEventListener("resize", this._resize);
 
     // アニメーションの開始時間を格納する変数
     this.startTime = Date.now();
@@ -52,8 +52,8 @@ export class App {
   _resize() {
     const width = this._wrapper.clientWidth;
     const height = this._wrapper.clientHeight;
-    this._renderer.domElement.setAttribute('width', String(width));
-    this._renderer.domElement.setAttribute('height', String(height));
+    this._renderer.domElement.setAttribute("width", String(width));
+    this._renderer.domElement.setAttribute("height", String(height));
     this._renderer.setPixelRatio(window.devicePixelRatio || 1.0);
     this._renderer.setSize(width, height);
     this._scene.camera.aspect = width / height;
