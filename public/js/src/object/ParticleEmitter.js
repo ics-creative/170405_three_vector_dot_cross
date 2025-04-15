@@ -27,9 +27,8 @@ export default class ParticleEmitter extends THREE.Object3D {
 
     // テクスチャ
     const loader = new THREE.TextureLoader();
-    this._texture = loader.load("imgs/particle.png", (tex) => {
-      tex.colorSpace = THREE.SRGBColorSpace;
-    });
+    this._texture = loader.load("imgs/particle.png");
+    this._texture.colorSpace = THREE.SRGBColorSpace;
 
     // 数分のパーティクルを生成
     for (let index = 0; index < PARTICLE_NUM; index++) {
